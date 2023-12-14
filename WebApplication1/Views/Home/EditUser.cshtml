@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var u = (user)ViewData["currentUser"];
+}
+
+<h2>Update User</h2>
+
+<center>
+    <form action="@Url.Action("Update", "YourControllerName")" method="post">
+        <div class="mb-5">
+            <input type="hidden" name="id" value="@u.userId" />
+            <label for="new_firstname" class="form-label">Firstname:</label>
+            <input type="text" class="form-control" id="new_firstname" name="new_firstname" value="@u.firstname" required>
+        </div>
+        <div class="mb-5">
+            <label for="new_lastname" class="form-label">Lastname:</label>
+            <input type="text" class="form-control" id="new_lastname" name="new_lastname" value="@u.lastName" required>
+        </div>
+        <div class="mb-5">
+            <label for="new_email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="new_email" name="new_email" value="@u.email" required>
+        </div>
+        <div class="mb-5">
+            <label for="new_password" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="new_password" name="new_password" value="@u.password" required>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-primary">Click here if it's already changed!</button>
+    </form>
+</center>

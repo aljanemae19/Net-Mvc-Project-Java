@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "ShowUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userList = (IEnumerable<user>)ViewData["UserList"];
+}
+
+
+<h2>Show Users</h2>
+
+<table class="table">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var user in userList)
+    {
+        <tr>
+            <td>@user.firstname</td>
+            <td>@user.lastName</td>
+            <td>@user.email</td>
+            <td>@user.password</td>
+            <td>
+                <form action="Edit" method="post">
+                    <input type="hidden" name="id" value="@user.userId" />
+                    <button type="submit">Edit</button>
+                </form>
+                <a href="@Url.Action("DeleteUser", new { id = user.userId })">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
